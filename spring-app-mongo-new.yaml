@@ -82,22 +82,11 @@ spec:
         - name: MONGO_INITDB_ROOT_PASSWORD
           value: devdb@123
 ---
-apiVersion: apps/v1
-kind: ReplicaSet
-metadata:
-  name: mongodb-rs
-  namespace: test-ns
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: mongodb
-  template:
-    metadata:
+apiVersion: v1
 kind: Service
 metadata:
-   name: mongosvc
-   namespace: test-ns
+  name: mongosvc
+  namespace: test-ns
 spec:
   selector:
     app: mongodb
@@ -106,4 +95,3 @@ spec:
     targetPort: 27017
 
 ---
-
